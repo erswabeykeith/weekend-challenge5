@@ -1,20 +1,29 @@
-var express = require('express');
+var express =  require('express');
 var app = express();
 var path = require('path');
+var bodyParser = require('body-parser');
+var employees = require('./routes/employees');
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // needed by Angular
 
-// serve static files
-app.use(express.static(path.resolve('./server/public')));
-
-// server index file
-app.get('/home', function(req, res) {
-    res.send("hello from the server");
+// middleware that doesn't do much
+app.use(function(req, res, next) {
+  console.log('hello from express!');
+  next();
 });
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, './public/views/index.html'));
+// Our routes
+app.use('/employees', employees);
+
+// Catchall route
+app.get('/', function (req, res) {
+  res.sendFile(path.resolve('./server/public/views/index.html'));
 });
 
-app.listen(3000, function() {
-  console.log("server running, check localhost:3000");
+app.use(express.static('./server/public'));
+
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'), function () {
+  console.log('Listening on port ', app.get('port'));
 });
