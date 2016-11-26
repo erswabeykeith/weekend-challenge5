@@ -16,14 +16,42 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller('EmployeesController', ["$http", function($http) {
   console.log('employees controller running');
-  var self = this;
-  self.message = "Employees controller is the best!";
+  // self.message = "Employees controller is the best!";
 
+  var self = this;
+  self.newemployee = {};
+  self.employees = [];
+
+  getEmployees();
+
+
+function getEmployees() {
   $http.get('/employees')
    .then(function(response) {
      console.log(response.data);
      self.data = response.data;
 
    });
+ }
 
-}]);
+   // tied to DOM thru self object
+   self.addEmployee = function() {
+     console.log('new employee: ', self.newEmployee);
+     $http.post('/employees', self.newEmployee)
+       .then(function(response) {
+         console.log('POST finished. Get employees again.');
+         getEmployees();
+       });
+   }
+   }]);
+
+//    self.deleteEmployee = function(employee) {
+//      var id = employee.id;
+//      console.log(employee.id);
+//      $http.delete('/employees/' + id)
+//        .then(function(response) {
+//          console.log('DELETE finished. Get employees again.');
+//          getEmployees();
+//        });
+//    }
+// }]);
