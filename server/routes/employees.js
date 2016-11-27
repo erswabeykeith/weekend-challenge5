@@ -3,6 +3,7 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/weekend_5';
 
+//Get employees
 router.get('/', function(req, res) {
 pg.connect(connectionString, function(err, client, done) {
     if(err) {

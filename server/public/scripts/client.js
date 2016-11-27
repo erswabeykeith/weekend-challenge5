@@ -1,5 +1,7 @@
+//Angular needs this!
 var app = angular.module('myApp', ['ngRoute']);
 
+//These are the routes we are using
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/employees', {
