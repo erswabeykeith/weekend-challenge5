@@ -19,8 +19,8 @@ app.controller('EmployeesController', ["$http", function($http) {
   // self.message = "Employees controller is the best!";
 
   var self = this;
-  self.newemployee = {};
   self.employees = [];
+  self.newEmployee = {};
 
   getEmployees();
 
@@ -40,6 +40,7 @@ function getEmployees() {
      $http.post('/employees', self.newEmployee)
        .then(function(response) {
          console.log('POST finished. Get employees again.');
+         self.newEmployee = {};
          getEmployees();
        });
    }
