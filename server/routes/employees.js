@@ -33,6 +33,7 @@ router.post('/', function(req, res) {
       [newEmployee.firstName, newEmployee.lastName, newEmployee.employeeId, newEmployee.jobTitle, newEmployee.annualSalary],
       function(err, result) {
         done();
+        console.log("data inserted!")
 
         if(err) {
           console.log('insert query error: ', err);
