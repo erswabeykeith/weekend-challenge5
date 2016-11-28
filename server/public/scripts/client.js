@@ -53,6 +53,7 @@ function getEmployees() {
          console.log('POST finished. Get employees again.');
          self.newEmployee = {};
          getEmployees()
+         console.log("got employees");
         //  $route.reload();
        });
    }
