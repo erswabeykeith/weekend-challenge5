@@ -32,7 +32,7 @@ function getEmployees() {
   $http.get('/employees')
    .then(function(response) {
      console.log(response.data);
-     self.data = response.data; //WTF is up with it going blank when I put in "employees" instead of "data"?
+     self.employees = response.data; //WTF is up with it going blank when I put in "employees" instead of "data"?
      //empty variable to hold total salary
            var totalSalary = 0;
            //loops thru the employeeArray and adds salary to total salary
@@ -46,7 +46,7 @@ function getEmployees() {
  }
 
    //POST request to add an employee; tied to DOM thru self object
-   self.addEmployee = function() {
+   self.addEmployee = function(employee) {
      console.log('new employee: ', self.newEmployee);
      $http.post('/employees', self.newEmployee)
        .then(function(response) {
@@ -54,18 +54,17 @@ function getEmployees() {
          self.newEmployee = {};
          getEmployees()
          console.log("got employees");
-        //  $route.reload();
        });
    }
-   }]);
 //Delete request to delete employee
-//    self.deleteEmployee = function(employee) {
-//      var id = employee.id;
-//      console.log(employee.id);
-//      $http.delete('/employees/' + id)
-//        .then(function(response) {
-//          console.log('DELETE finished. Get employees again.');
-//          getEmployees();
-//        });
-//    }
-// }]);
+   self.deleteEmployee = function(employee) {
+     var id = employee.id;
+     console.log(employee.id);
+     $http.delete('/employees/' + id)
+       .then(function(response) {
+         console.log('DELETE finished. Get employees again.');
+         getEmployees();
+         console.log("got employees again");
+       });
+   }
+}]);

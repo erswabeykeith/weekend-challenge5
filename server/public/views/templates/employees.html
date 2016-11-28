@@ -27,7 +27,7 @@
 
 
     <button class="btn btn-default" ng-click="employees.addEmployee()">Submit Employee</button>
-    <button class="btn btn-default" ng-click="employees.deleteEmployee(employee)">Delete Employee</button>
+
   </form>
   <table class="table">
     <thead>
@@ -40,16 +40,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="employee in employees.data">
+      <tr ng-repeat="employee in employees.employees">
         <td>{{employee.first_name}}</td>
         <td>{{employee.last_name}}</td>
         <td>{{employee.employee_id}}</td>
         <td>{{employee.employee_job}}</td>
         <td>{{employee.employee_salary}}</td>
+        <td><button class="btn btn-default" ng-click="employees.deleteEmployee(employee)">Delete Employee</button></td>
       </tr>
     </tbody>
   </table>
 </div>
 <div>
-  <h2>Total Monthly Salary: </h3> <span id="monthlySalary" >${{employees.monthlySalary}}</span>
+  <h2>Total Monthly Salary: </h3> <span id="monthlySalary" ng-model="employees.monthlySalary" >${{employees.monthlySalary}}</span>
   </div>
