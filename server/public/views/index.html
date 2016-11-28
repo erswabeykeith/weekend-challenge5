@@ -11,49 +11,18 @@
 
   </head>
   <body ng-app="myApp">
-    <main class="container" ng-controller="EmployeesController as employeeController">
+    <main class="container" ng-controller="EmployeesController as employees">
     <header ng-include="'/views/templates/header.html'" class="jumbotron text-center">Week 5!!</header>
 
-    <form id="employee-form">
-      <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input type="text" ng-model="employeeController.newEmployee.first_name" name="first_name" class="form-control" />
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" ng-model="employeeController.newEmployee.last_name" name="last_name" class="form-control" />
-      </div>
-
-      <div class="form-group">
-        <label for="employeeId">Employee ID:</label>
-        <input type="text" ng-model="employeeController.newEmployee.employee_id" name="employee_id"  class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label for="jobTitle">Job Title:</label>
-        <input type="text" ng-model="employeeController.newEmployee.employee_job" name="employee_job" class="form-control"/>
-      </div>
-
-      <div class="form-group">
-        <label for="annualSalary">Annual Salary:</label>
-        <input type="number" ng-model="employeeController.newEmployee.employee_salary" name="employee_salary" class="form-control"/>
-      </div>
-
-
-      <button class="btn btn-default" ng-click="employeeController.addEmployee()">Submit Employee</button>
-      <button class="btn btn-default" ng-click="employeeController.deleteEmployee(employee)">Delete Employee</button>
-    </form>
     <!-- <select ng-model="selectedGenre">
       <option ng-repeat="book in employeeController.books | unique:'genre'">{{book.genre}}</option>
     </select> -->
 
     <!-- <div ng-include="'/views/templates/nav.html'"></div> -->
 
-    <main ng-view></main>
+    <p ng-view></p>
 
     <!-- <button class="btn btn-default" ng-click="employeeController.addEmployee()">Go</button> -->
     <!-- <footer class="text-center" ng-include="'/views/templates/footer.html'"></footer> -->
-
   </body>
 </html>
