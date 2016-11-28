@@ -10,44 +10,54 @@ app.config(['$routeProvider', function($routeProvider) {
       controllerAs: 'employees'
     })
 
+//Default route
     .otherwise({
       redirectTo: 'employees'
     });
 
 }]);
-
+//Controller for the employees
 app.controller('EmployeesController', ["$http", function($http) {
   console.log('employees controller running');
   // self.message = "Employees controller is the best!";
 
+//Define this, and an empty array and object
   var self = this;
   self.employees = [];
   self.newEmployee = {};
 
-  getEmployees();
-
-
+//Get employees request made
+getEmployees();
 function getEmployees() {
   $http.get('/employees')
    .then(function(response) {
      console.log(response.data);
      self.data = response.data;
+     //empty variable to hold total salary
+           var totalSalary = 0;
+           //loops thru the employeeArray and adds salary to total salary
+           for(var i = 0; i < self.employees.length; i++) {
+             totalSalary += Number(self.employees[i].employee_salary);
+           }
+           //set the monthly salary for angular proper
+           self.monthlySalary = Math.round(totalSalary/12);
 
    });
  }
 
-   // tied to DOM thru self object
+   //POST request to add an employee; tied to DOM thru self object
    self.addEmployee = function() {
      console.log('new employee: ', self.newEmployee);
      $http.post('/employees', self.newEmployee)
        .then(function(response) {
          console.log('POST finished. Get employees again.');
          self.newEmployee = {};
-         getEmployees();
+         getEmployees()
+        //  $route.reload();
        });
    }
    }]);
-
+//Delete request to delete employee
 //    self.deleteEmployee = function(employee) {
 //      var id = employee.id;
 //      console.log(employee.id);

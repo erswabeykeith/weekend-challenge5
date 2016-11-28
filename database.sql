@@ -11,5 +11,7 @@ VALUES ('Stella', 'Skater', 12345, 'Powerless House Cat', 200),
 ('Mitzi', 'Kitty', 34567, 'Senior Powerless House Cat', 300),
 ('Ozzie', 'Aussie', 23456, 'Guard Dog', 500);
 
+SELECT * FROM employees;
+
 SELECT SUM (employee_salary)
 FROM employees;

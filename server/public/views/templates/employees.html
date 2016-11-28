@@ -1,31 +1,25 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Employee ID</th>
-      <th>Job Title</th>
-      <th>Annual Salary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="employee in employees.data">
-        <td>
-          {{employee.first_name}}
-        </td>
-        <td>
-          {{employee.last_name}}
-        </td>
-        <td>
-          {{employee.employee_id}}
-        </td>
-        <td>
-          {{employee.employee_job}}
-        </td>
-        <td>
-          {{employee.employee_salary}}
-        </td>
-        <!-- Add other columns for table -->
-    </tr>
-  </tbody>
-</table>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Employee ID</th>
+        <th>Job Title</th>
+        <th>Annual Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="employee in employees.data">
+        <td>{{employee.first_name}}</td>
+        <td>{{employee.last_name}}</td>
+        <td>{{employee.employee_id}}</td>
+        <td>{{employee.employee_job}}</td>
+        <td>{{employee.employee_salary}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <h2>Total Monthly Salary: </h3> <span id="monthlySalary" >${{employees.monthlySalary}}</span>
+  </div>
