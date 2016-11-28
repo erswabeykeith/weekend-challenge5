@@ -38,7 +38,7 @@ router.post('/', function(req, res) {
     client.query(
       'INSERT INTO employees (first_name, last_name, employee_id, employee_job, employee_salary) ' +
       'VALUES ($1, $2, $3, $4, $5)',
-      [newEmployee.firstName, newEmployee.lastName, newEmployee.employeeId, newEmployee.jobTitle, newEmployee.annualSalary],
+      [newEmployee.first_name, newEmployee.last_name, newEmployee.employee_id, newEmployee.employee_job, newEmployee.employee_salary],
       function(err, result) {
         done();//close connection
         console.log("data inserted!")

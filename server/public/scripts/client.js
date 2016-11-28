@@ -32,7 +32,7 @@ function getEmployees() {
   $http.get('/employees')
    .then(function(response) {
      console.log(response.data);
-     self.data = response.data;
+     self.data = response.data; //WTF is up with it going blank when I put in "employees" instead of "data"?
      //empty variable to hold total salary
            var totalSalary = 0;
            //loops thru the employeeArray and adds salary to total salary
